@@ -43,13 +43,13 @@ cd ~/dotfiles
 Then activate whichever configuration packages you wish to use, for example:
 
 ```bash
-stow nvim
+stow -vt ~ nvim
 ```
 
 or:
 
 ```bash
-stow git
+stow -vt ~ git
 ```
 
 This will create symbolic links such as:
@@ -72,7 +72,7 @@ dotfiles/
 Each directory corresponds to a package that may be activated individually:
 
 ```bash
-stow nvim git
+stow -vt ~ nvim git
 ```
 
 ---
@@ -90,7 +90,7 @@ To remove a configuration package and its links:
 
 ```bash
 cd ~/dotfiles
-stow -D nvim
+stow -Dvt ~ nvim
 ```
 
 ---
@@ -101,7 +101,7 @@ stow -D nvim
   ```bash
   mkdir -p ~/dotfiles/zsh
   # place your .zshrc inside
-  stow zsh
+  stow -vt ~ zsh
   ```
 
 - When setting up a new machine:
