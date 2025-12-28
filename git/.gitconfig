@@ -1,0 +1,42 @@
+[user]
+	name = mgierok
+	email = mgierok@gmail.com
+[core]
+	editor = nvim
+	autocrlf = input
+	whitespace = cr-at-eol
+	ignorecase = false
+[init]
+	defaultBranch = main
+[push]
+	default = current
+[pull]
+	rebase = true
+[fetch]
+	prune = true
+[color]
+	ui = auto
+[merge]
+	conflictstyle = diff3
+[alias]
+	s = status -sb
+	lg = log --oneline --graph --decorate --all
+
+	co = checkout
+	cm = commit -m
+	ca = commit --amend
+	b = branch
+	br = branch -v
+	rb = rebase
+	st = status
+	df = diff
+	dft = difftool
+	ps = push
+	pl = pull
+
+	a = add -A
+	aa = add .
+	unstage = reset HEAD --
+	uncommit = reset --soft HEAD^
+
+	who = blame
