@@ -110,6 +110,25 @@ stow -Dvt ~ nvim
 
 ---
 
+Some Neovim plugins require external command-line tools to function correctly.  
+Mason installs *language servers, formatters and linters*, but it does **not** install the
+language runtimes they depend upon. The tools below are recommended so that all
+configured features work reliably.
+
+### Required
+
+| Dependency | Purpose | Notes |
+|------------|---------|-------|
+| `git` | plugin manager, version control | required by lazy.nvim and Neovim in general |
+| `tree-sitter` | compiles syntax parsers | enables `:TSInstall` and treesitter highlighting |
+| `ripgrep` (`rg`) | project-wide text search | used by fuzzy search pickers (e.g. Snacks) |
+| `node` | runtime for several LSP servers | required by `pyright`, `tsserver` and others |
+| `python3` | runtime for Python formatting and tooling | required by `black` and other Python tools |
+| `go` | runtime for Go tooling | **required** for `gopls` to run properly |
+| `fd` | quicker file search for tools that support it ||
+| a Nerd Font | icon support in Neovim UI (`devicons`) ||
+
+
 ## 📜 Licence
 
 Feel free to use and adapt. No warranty provided.
