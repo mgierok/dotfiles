@@ -1,5 +1,3 @@
-local vim = vim
-
 vim.cmd([[hi @lsp.type.number gui=italic]])
 
 -- Colours
@@ -82,6 +80,28 @@ vim.api.nvim_create_autocmd('FileType', {
 
 vim.lsp.enable({
   "lua_ls", "cssls", "rust_analyzer", "tailwindcss", "ts_ls", "gopls", "pyright"
+})
+
+vim.lsp.config("lua_ls", {
+  settings = {
+    Lua = {
+      runtime = {
+        version = "LuaJIT",
+      },
+      diagnostics = {
+        globals = {
+          "vim",
+          "require",
+        },
+      },
+      workspace = {
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+      telemetry = {
+        enable = false,
+      },
+    },
+  },
 })
 
 local prettier_ft = {
