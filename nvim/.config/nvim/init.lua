@@ -68,7 +68,7 @@ vim.pack.add({
   { src = "https://github.com/nvim-mini/mini.pairs" },
   { src = "https://github.com/nvim-mini/mini.splitjoin" },
   { src = "https://github.com/nvim-mini/mini.pick" },
-  { src = "https://github.com/saghen/blink.cmp",                version = "*" },
+  -- { src = "https://github.com/saghen/blink.cmp",                version = "*" },
 })
 
 vim.cmd.colorscheme("zenburn")
@@ -141,17 +141,27 @@ vim.keymap.set({ "n", "v", "x" }, "<leader>lf", function()
   format_buffer()
 end, { desc = "Format current buffer" })
 
-require("blink.cmp").setup({
-  fuzzy = {
-    implementation = "lua"
-  },
-  keymap = {
-    preset = "enter",
-  },
-  sources = {
-    default = { "lsp", "path", "buffer" },
-  },
+vim.cmd("set completeopt+=noselect")
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(ev)
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    if client ~= nil and client:supports_method("textDocument/completion") then
+      vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+    end
+  end,
 })
+
+-- require("blink.cmp").setup({
+--   fuzzy = {
+--     implementation = "lua"
+--   },
+--   keymap = {
+--     preset = "enter",
+--   },
+--   sources = {
+--     default = { "lsp", "path", "buffer" },
+--   },
+-- })
 
 require("mini.pairs").setup()
 require("mini.splitjoin").setup()
