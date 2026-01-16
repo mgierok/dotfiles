@@ -1,1 +1,2 @@
-bind status R !git restore %(file)
+bind status R ?!git restore %(file)
+bind status X ?!rm %(file)
