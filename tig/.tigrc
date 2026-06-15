@@ -1,2 +1,5 @@
 bind status R ?!git restore %(file)
 bind status X ?!rm %(file)
+bind status A !git commit --amend --no-edit
+bind main R !git revert %(commit)
+set wrap-lines = yes
