@@ -1,6 +1,7 @@
 [user]
 	name = mgierok
 	email = mgierok@gmail.com
+
 [core]
 	editor = nvim
 	autocrlf = input
@@ -40,3 +41,6 @@
 	uncommit = reset --soft HEAD^
 
 	who = blame
+
+[includeIf "gitdir:~/Projects/footballco/"]
+  path = ~/.gitconfig-footballco
