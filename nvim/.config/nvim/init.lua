@@ -7,7 +7,7 @@ vim.opt.termguicolors = true
 vim.opt.autowrite = true
 
 -- Text
-vim.opt.wrap = false
+vim.opt.wrap = true
 
 -- Left margin
 vim.opt.number = true
@@ -113,7 +113,7 @@ local prettier_ft = {
   html = true,
   json = true,
   jsonc = true,
-  markdown = true,
+  markdown = false,
   yaml = true,
 }
 
@@ -134,9 +134,9 @@ local function format_buffer()
 end
 
 -- format on save
-vim.api.nvim_create_autocmd("BufWritePre", {
-  callback = format_buffer,
-})
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+--   callback = format_buffer,
+-- })
 vim.keymap.set({ "n", "v", "x" }, "<leader>lf", function()
   format_buffer()
 end, { desc = "Format current buffer" })
